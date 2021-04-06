@@ -1,19 +1,15 @@
-const DataProfile = require('../Model/ModelProfile')
+const DataCategory = require('../Model/ModelCate')
 const fs = require('fs')
 const path = require('path')
 
-exports.insertProfile = (req,res)=>{
-    let {name,profession,categoryId,Phone,Address} = req.body
+exports.insertCategory = (req,res)=>{
+    let {type} = req.body
     let photo = []
     req.files.forEach((data)=>{
         photo.push(data.path)
     })    
-    let dataSave = new DataProfile({
-        name        :name,
-        profession  :profession,
-        categoryId  :categoryId,
-        Phone       :Phone,
-        Address     :Address,
+    let dataSave = new DataCategory({
+        type        :type,
         photo       :photo
     })
     dataSave.save().then((doc)=>{
@@ -26,8 +22,8 @@ exports.insertProfile = (req,res)=>{
     })
 }
 
-exports.getProfile = (req,res)=>{
-    DataProfile.find().exec((err,doc)=>{
+exports.getCategory = (req,res)=>{
+    DataCategory.find().exec((err,doc)=>{
         if(!err){
             res.status(200).json({
                 message:"Berhasil mendapatkan semua data!",
@@ -40,9 +36,9 @@ exports.getProfile = (req,res)=>{
     
 }
 
-exports.getProfileByID = (req,res)=>{
-    let idProfile = req.params.id
-    DataProfile.findById(idProfile).exec((err,doc)=>{
+exports.getCategoryByID = (req,res)=>{
+    let idCategory = req.params.id
+    DataCategory.findById(idCategory).exec((err,doc)=>{
         if(!err){
             res.status(200).json({
                 message:"Berhasil mendapatkan semua data!",
@@ -54,14 +50,14 @@ exports.getProfileByID = (req,res)=>{
     })
 }
 
-exports.updateProfile = (req,res)=>{
-    let idProfile=req.params.id
-    DataProfile.findByIdAndUpdate(idProfile,req,(err,doc)=>{
+exports.updateCategory = (req,res)=>{
+    let idCategory=req.params.id
+    DataCategory.findByIdAndUpdate(idCategory,req,(err,doc)=>{
         if(!err){
             req.files.forEach((data,i)=>{
                 let oldPath = doc.photo[i]
                 let newPath = data.path
-                fs.rename(newPath,oldPath,(err)=>{
+                fs.retype(newPath,oldPath,(err)=>{
                     if(err){
                         throw err;
                     }
@@ -78,9 +74,9 @@ exports.updateProfile = (req,res)=>{
 
 }
 
-exports.deleteProfile = (req,res)=>{
-    let idProfile = req.params.id
-    DataProfile.findByIdAndDelete(idProfile,(err,doc)=>{
+exports.deleteCategory = (req,res)=>{
+    let idCategory = req.params.id
+    DataCategory.findByIdAndDelete(idCategory,(err,doc)=>{
         if(!err){
             doc.photo.forEach((data)=>{
                 removeImages(data)
@@ -97,7 +93,7 @@ exports.deleteProfile = (req,res)=>{
 }
 
 const removeImages = (filepath)=>{
-    filepath = path.join(__dirname, '../', filepath);
+    filepath = path.join(__dirtype, '../', filepath);
     fs.unlink(filepath, err => {
         console.log(err)
     })
