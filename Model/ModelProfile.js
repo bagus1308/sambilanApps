@@ -10,7 +10,7 @@ const ModelProfile = new mongodb.Schema({
         required: true
     },
     categoryId: [{
-        type: ObjectId,
+        type: String,
         ref: "category"
     }],
     Phone: {
@@ -22,7 +22,7 @@ const ModelProfile = new mongodb.Schema({
         required: true,
     },
     photo: {
-        type: String,
+        type: Array,
         required: true,
     }
 })
