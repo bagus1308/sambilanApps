@@ -1,0 +1,77 @@
+||Schema  ||
+
+Category
+
+1. Type (tipe kategori)
+2. Photo (bisa disiapkan untuk kepeluan Front-End)
+
+[Operation]  // CRUD
+
+================================================================
+
+ Profile Services
+
+ [profile]
+
+ ini adalah Schema untuk si pekerja yang daftar di platform 
+
+ 1. Name
+ 2. Profesion (profesi si jasa)
+ 3. CategoryId (Bertipe ObjectId ini di ambil dari Schema Category)
+ 4. Phone
+ 5. Address
+ 6. Photo
+
+ [Operation] //CRUD
+
+=================================================================
+
+ Items 
+ ini adalah Item-item yang berisikan gabungan dari schema Category dan Profile
+ 
+ 1. ProfileId 
+ // bertipe ObjectId yg di ambil dari Schema Profile Services
+ // include dengan foto 
+
+ 2. CategoryId 
+ // bertipe ObjectId dari Schema Category
+
+ 3.Description 
+// yang berisikan apa saja yang jasa yang bisa di berikan oleh si pejasa
+// contoh si pejasa bisa melakukan pengasuhan bayi
+
+ 4. Price
+
+[Operation] // CRUD
+
+=====================================================================
+
+Form Checkout
+
+ 1. itemId
+ 2. profileId
+ 3. CategoryId
+ 4. paymentId
+ 6. userId
+ // userId ini didapatkan ketika login lewat firebase
+
+[Operation] // CRUD
+
+=====================================================================
+
+ User
+
+ //untuk user ini di buat di firebase
+ 1. Name
+ 2. Alamat
+ 3. Location
+
+
+
+ ========================================================================
+
+
+ mungkin ada shema baru untuk menampung data checkout seperti history pemesanan
+
+
+ pendapat ny

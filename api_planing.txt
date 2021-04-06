@@ -1,0 +1,62 @@
+==============================================================================================================================
+
+root 
+
+{root.api}/{endpoint}
+SAMPALE "
+
+http://root-api.aji.com/v1/auth/register
+
+
+Status Response
+
+200 - OK                            --> Call API Success
+201 - CREATED                       --> Post Success // post
+400 - BAD REQUEST                   --> Error on Client Side ( Inputan ada yang salah , dll)
+401 - UNAUTHORIZED                  --> User not authorized to the request.
+403 - FORBIDDEN                     --> User not Allowed to access.
+404 - NOT FOUND                     --> Request Endpoint Not Found.
+500 - INTERNAL SERVER ERROR         --> Error on Server Side.
+502 - BAD GATEWAY                   --> Invalid Response From Another Request
+
+
+==============================================================================================================================
+
+Category
+
+[Get] - {root}/v1/category
+[Post] - {root}/v1/category
+[Put] - {root}/v1/category/{params}
+[Delete] - {root}/v1/category/{params}
+
+==============================================================================================================================
+
+Profile
+
+[Get] - {root}/v1/profile-services
+[Post] - {root}/v1/profile-services
+[Put] - {root}/v1/profile-services/{params}
+[Delete] - {root}/v1/profile-services/{params}
+
+==============================================================================================================================
+
+Items
+
+[Get] - {root}/v1/item
+[Post] - {root}/v1/item
+[Put] - {root}/v1/item/{params}
+[Delete] - {root}/v1/item/{params}
+
+==============================================================================================================================
+
+Form Checkout
+
+[Get] - {root}/v1/form-checkout
+[Post] - {root}/v1/form-checkout
+[Put] - {root}/v1/form-checkout/{params}
+[Delete] - {root}/v1/form-checkout/{params}
+
+
+
+ada endpoint untuk melihat list checkout 
+jadi isinya seperti history pemesanan

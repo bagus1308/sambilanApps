@@ -1,0 +1,151 @@
+
+Schema category
+
+type : {
+    type: String,
+    required: true,
+},
+photo : {
+    type: String
+}
+
+----------------------------------------------
+
+Schema profile 
+
+name: {
+    type: String,
+    required: true
+},
+profession: {
+    type: String,
+    required: true
+},
+categoryId: [{
+    type: ObjectId,
+    ref: "category"
+}],
+Phone: {
+    type  Number,
+    required: true
+},
+Address: {
+    type: String,
+    required: true,
+},
+photo: {
+    type: String,
+    required: true,
+}
+
+
+===========================================================
+
+Schema Item
+
+itemId: [{
+    type: ObjectId,
+    ref: "profile"
+}],
+profileId: [{
+    type: ObjectId,
+    ref: "profile"
+}],
+
+categoryId: [{
+    type: ObjectId,
+    ref: "category"
+}],
+Description: {
+    type: String,
+},
+price: {
+    type: Number,
+    required: true
+}
+
+==========================================================
+
+checkout
+
+
+ itemId: [{
+    type: ObjectId,
+    ref: "profile"
+}],
+profileId: [{
+    type: ObjectId,
+    ref: "profile"
+}],
+ categoryId: [{
+    type: ObjectId,
+    ref: "category"
+}],
+ paymentId :{
+    type: String,
+    required: true
+ }
+ categoryId: [{
+    type: ObjectId,
+    ref: "user" // didapat dari firebase
+}],
+
+===============================================================
+
+catatan: 
+untuk shema user masih belum tau tapi kalo mau di buat ini di panggil waktu si user registrasi
+jadi ada 2 data yang dikirimkan waktu registrasi
+1. data dikirim ke firebase
+2. data dikirim ke Beck- End
+
+firebase
+
+ user
+ name :{
+    type: String,
+    required: true
+ },
+ email :{ 
+    type: String,
+    required: true
+ },
+ password:{
+     type: String,
+    required: true
+ }
+ address :{
+    type: String,
+    required: true
+ },
+ location: {
+    type: String,
+    required: true
+ },
+
+ ---------------------------------
+
+ Shecma Mongoo
+
+ name :{
+    type: String,
+    required: true
+ },
+ email :{ 
+    type: String,
+    required: true
+ },
+ 
+ address :{
+    type: String,
+    required: true
+ },
+ 
+ ada beberapa perbedaan karna untuk Schema ini hanya di perlukan data yang perlu saja
+ ini untuk melihat si user memesan ap saja 
+
+mungkin ada shema baru untuk menampung data checkout seperti history pemesanan
+
+ ______________________
+| semoga bisa membantu |
+|                      |        
+|______________________|
