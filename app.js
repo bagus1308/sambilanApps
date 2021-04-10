@@ -74,6 +74,7 @@ app.use(multer({
 }).array('photo',5))
 
 //navigasi
+app.use(cors());
 app.use('/'         , indexRouter);
 app.use('/users'    , usersRouter);
 app.use('/pen'      , penRouter);
@@ -81,7 +82,6 @@ app.use('/profile'  , profileRouter);
 app.use('/category' , CateRouter);
 app.use('/item'     , ItemRouter);
 app.use('/checkout' , CheckoutRouter);
-app.use(cors());
 
 
 // catch 404 and forward to error handler
