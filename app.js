@@ -1,6 +1,9 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+
+const cors = require('cors');
+
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
@@ -78,6 +81,7 @@ app.use('/profile'  , profileRouter);
 app.use('/category' , CateRouter);
 app.use('/item'     , ItemRouter);
 app.use('/checkout' , CheckoutRouter);
+app.use(cors());
 
 
 // catch 404 and forward to error handler
