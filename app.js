@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var mongodb = require('mongoose')
 var path = require('path');
 
 const cors = require('cors');
@@ -25,7 +26,6 @@ dotenv.config({path:'./config.env'})
 //DB controller
 const DB = process.env.DATABASE.replace('<password>',process.env.DATABASE_PASSWORD)
 
-var mongodb = require('mongoose')
 
 mongodb.connect(
   DB,
@@ -65,13 +65,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, "public")));
 //app.use multer
 app.use(multer({
   storage:fileStorage,
   fileFilter:fileFilter
-}).array('photo',5))
+}).array('photo'))
 
 //navigasi
 app.use(cors());
